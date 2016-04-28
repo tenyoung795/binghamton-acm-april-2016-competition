@@ -19,6 +19,8 @@ static constexpr Peg other(Peg a, Peg b) {
             return b == Peg::A ? Peg::C : Peg::A;
         case Peg::C:
             return b == Peg::A ? Peg::B : Peg::A;
+        default:
+            return b;
     }
 }
 
