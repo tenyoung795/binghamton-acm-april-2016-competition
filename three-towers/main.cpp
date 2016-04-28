@@ -12,16 +12,11 @@ enum class Peg {
 };
 
 static constexpr Peg other(Peg a, Peg b) {
-    switch (a) {
-        case Peg::A:
-            return b == Peg::B ? Peg::C : Peg::B;
-        case Peg::B:
-            return b == Peg::A ? Peg::C : Peg::A;
-        case Peg::C:
-            return b == Peg::A ? Peg::B : Peg::A;
-        default:
-            return b;
-    }
+    return a == Peg::A
+        ? b == Peg::B ? Peg::C : Peg::B
+        : a == Peg::B
+        ? b == Peg::A ? Peg::C : Peg::A
+        : b == Peg::A ? Peg::B : Peg::A;
 }
 
 static void solve(const PegNames &peg_names, unsigned int num_disks, Peg src, Peg dst) {
